@@ -47,14 +47,17 @@ class MiApp:
         self.controles = Frame(self.seccion_controles, bg="#222")
         self.controles.pack(side=TOP, expand=NO, fill=X)
 
+        mod_class = Modificar()
 
         boton1 = Button(self.seccion_controles, text='Guardar', command=guardar)
         boton2 = Button(self.seccion_controles, text='Ver!', command=leer)
         boton3 = Button(self.seccion_controles, text='Borrar!', command=borrar)
-        boton3 = Button(self.seccion_controles, text='Modificar!', command=modificar)
+        boton4 = Button(self.seccion_controles, text='Modificar!',
+                        command=mod_class.modificar)
         boton1.pack()
         boton2.pack()
         boton3.pack()
+        boton4.pack()
         Cerrar(self.seccion_cerrar)
 
 if __name__ == '__main__':

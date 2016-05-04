@@ -4,6 +4,16 @@ from guardar import *
 from PersonaP.PersonaM import Persona
 archivo = 'persona'
 
+def guarda_dict(variables, popupGuardar):
+    print variables
+    print (variables['id'])
+    popupGuardar.destroy()
+    guardoValor = Persona(variables['nombre'], variables['edad'],
+                          variables['sueldo'],variables['trabajo'])
+    db = shelve.open('persona')
+    db[variables['id'].get()] = guardoValor
+    db.close()
+
 
 def guarda(variables, popupGuardar):
     popupGuardar.destroy()
@@ -20,8 +30,7 @@ def guarda(variables, popupGuardar):
 def guardar():
     popupGuardar = Toplevel()
     vars_guardar = CrearFormGuardar(popupGuardar, campos)
-    Button(popupGuardar, text='guardar', command=(lambda: guarda(vars_guardar, popupGuardar))).pack()
-
+    Button(popupGuardar, text='Guardar', command=(lambda: guarda(vars_guardar, popupGuardar))).pack()
     popupGuardar.grab_set()
     popupGuardar.focus_set()
     popupGuardar.wait_window()
