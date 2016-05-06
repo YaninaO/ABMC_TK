@@ -15,10 +15,10 @@ class Persona:
         return ('%s => Nombre: %s - Edad: %s - Trabajo: %s Sueldo: %s>' %
             (self.__class__.__name__, self.nombre,self.edad, self.trabajo, self.sueldo))
 
-if __name__ == '__main__':
-    Juan = Persona('Juan Garcia', 42, 30000, 'software')
-    Susana = Persona('Susana Gomez', 45, 40000, 'hardware')
-    print(Juan.nombre, Susana.sueldo)
-    print(Juan.apellido())
-    Susana.darAumento(0.10)
-    print(Susana.sueldo)
+# if __name__ == '__main__':
+#     Juan = Persona('Juan Garcia', 42, 30000, 'software')
+#     Susana = Persona('Susana Gomez', 45, 40000, 'hardware')
+#     print(Juan.nombre, Susana.sueldo)
+#     print(Juan.apellido())
+#     Susana.darAumento(0.10)
+#     print(Susana.sueldo)

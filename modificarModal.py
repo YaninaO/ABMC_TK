@@ -12,28 +12,31 @@ class Modificar(object):
     def modifica(self, idVar, popupModificar):
         lab = Label(popupModificar, width=100, text=idVar.get())
         lab.pack(side=TOP)
-        t = idVar.get()
+        self.t = idVar.get()
         db = shelve.open('persona')
         popupModificar2 = Toplevel()
         form_modificar = FormularioModificar()
+        self.persona_a_modificar = db[self.t]
+        db.close()
         variables = form_modificar.CrearFormModificar(popupModificar2, campos)
-        self.persona_a_modificar = db[t]
-        self.persona_a_modificar.nombre = variables['nombre'].get()#lista[1]
-        self.persona_a_modificar.edad = variables['edad'].get()
-        self.persona_a_modificar.trabajo = variables['trabajo'].get()
-#        valor_id = lista[0]
-   #     db = shelve.open('persona')
-        # guardoValor = Persona(lista[1], lista[2], lista[3], lista[4])
-#        guardarValor = persona_a_modificar
- #       db[t]= guardarValor
-  #      db.close()
         Button(popupModificar2, text='Dar Aumento',
                command=lambda: (self.dar_aumento())).pack()
         Button(popupModificar2, text='Guardar',
-                command=(lambda: guarda_dict(variables, popupModificar2))).pack()
+                command=(lambda: guarda_dict(self.t, self.persona_a_modificar,
+                                             variables, popupModificar2))).pack()
         popupModificar2.grab_set()
         popupModificar2.focus_set()
         popupModificar2.wait_window()
+
+    def modificar(self):
+        popupModificar = Toplevel()
+        popupModificar.geometry("400x300")
+        mod = CrearFormLeer(popupModificar)
+        Button(popupModificar, text='Buscar', command=(lambda:
+                                                       self.modifica(mod, popupModificar))).pack()
+        popupModificar.grab_set()
+        popupModificar.focus_set()
+        popupModificar.wait_window()
 
     def dar_aumento(self):
         percentage_win = Toplevel()
@@ -54,16 +57,7 @@ class Modificar(object):
         percentage_win.grab_set()
         percentage_win.focus_set()
         percentage_win.wait_window()
-        self.persona_a_modificar.darAumento(var)
+        self.persona_a_modificar.darAumento(var.get())
 
-    def modificar(self):
-        popupModificar = Toplevel()
-        popupModificar.geometry("400x300")
-        mod = CrearFormLeer(popupModificar)
-        Button(popupModificar, text='Buscar', command=(lambda:
-                                                self.modifica(mod, popupModificar))).pack()
-        popupModificar.grab_set()
-        popupModificar.focus_set()
-        popupModificar.wait_window()
 
 
