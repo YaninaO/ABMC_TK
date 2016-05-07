@@ -17,7 +17,10 @@ def CrearFormGuardar(root, campos):
         ent = Entry(div2, width=30, relief=SUNKEN)
         lab.pack(side=TOP)
         ent.pack(side=TOP, fill=X)
-        var = StringVar()
+        if field == 'sueldo':
+            var = DoubleVar()
+        else:
+            var = StringVar()
         ent.config(textvariable=var)
         var.set('---')
         variables.append(var)

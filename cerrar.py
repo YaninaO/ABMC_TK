@@ -1,6 +1,7 @@
 from tkinter import *
 from tkinter.messagebox import askokcancel
 
+
 class Cerrar(Frame):
     def __init__(self, parent=None):
         Frame.__init__(self, parent)
@@ -12,6 +13,3 @@ class Cerrar(Frame):
         consulta = askokcancel('Cerrar', "Desea abandonar la aplicacion")
         if consulta:
             Frame.quit(self)
-
-if __name__ == '__main__':
-    Cerrar().mainloop()
