@@ -28,7 +28,8 @@ def guarda(variables, popupGuardar):
 def guardar():
     popupGuardar = Toplevel()
     vars_guardar = CrearFormGuardar(popupGuardar, campos)
-    Button(popupGuardar, text='Guardar', command=(lambda: guarda(vars_guardar, popupGuardar))).pack()
+    Button(popupGuardar, text='Guardar',
+           command=(lambda: guarda(vars_guardar, popupGuardar))).pack()
     popupGuardar.grab_set()
     popupGuardar.focus_set()
     popupGuardar.wait_window()

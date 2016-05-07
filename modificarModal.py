@@ -1,10 +1,7 @@
-from tkinter import *
-import shelve
-from modificar import *
-from guardar import *
-from leer import *
 from guardarModal import *
-from PersonaP.PersonaM import Persona
+from modificar import *
+from leer import *
+
 archivo = 'persona'
 
 class Modificar(object):
@@ -12,17 +9,18 @@ class Modificar(object):
     def modifica(self, idVar, popupModificar):
         lab = Label(popupModificar, width=100, text=idVar.get())
         lab.pack(side=TOP)
-        self.t = idVar.get()
+        self.id_value = idVar.get()
         db = shelve.open('persona')
         popupModificar2 = Toplevel()
         form_modificar = FormularioModificar()
-        self.persona_a_modificar = db[self.t]
+        self.persona_a_modificar = db[self.id_value]
         db.close()
-        variables = form_modificar.CrearFormModificar(popupModificar2, campos)
+        variables = form_modificar.CrearFormModificar(popupModificar2,
+                                                      campos, self.id_value)
         Button(popupModificar2, text='Dar Aumento',
                command=lambda: (self.dar_aumento())).pack()
         Button(popupModificar2, text='Guardar',
-                command=(lambda: guarda_dict(self.t, self.persona_a_modificar,
+                command=(lambda: guarda_dict(self.id_value, self.persona_a_modificar,
                                              variables, popupModificar2))).pack()
         popupModificar2.grab_set()
         popupModificar2.focus_set()

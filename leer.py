@@ -1,5 +1,4 @@
 from tkinter import *
-from cerrar import Cerrar
 
 
 def CrearFormLeer(root):
