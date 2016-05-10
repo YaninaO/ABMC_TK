@@ -12,6 +12,5 @@ class Persona:
         self.sueldo *= (1.0 + porcentaje)
 
     def __str__(self):
-        return ('%s => Nombre: %s - Edad: %s - Trabajo: %s Sueldo: %s>' %
+        return ('%s \n Nombre: %s - Edad: %s \n Trabajo: %s Sueldo: %s>' %
             (self.__class__.__name__, self.nombre,self.edad, self.trabajo, self.sueldo))
-

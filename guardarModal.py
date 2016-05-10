@@ -27,6 +27,8 @@ def guarda(variables, popupGuardar):
 
 def guardar():
     popupGuardar = Toplevel()
+    font = "Helvetica 12 bold"
+    Label(popupGuardar, text='Ingrese los datos a guardar', font=font).pack(side=TOP)
     vars_guardar = CrearFormGuardar(popupGuardar, campos)
     Button(popupGuardar, text='Guardar',
            command=(lambda: guarda(vars_guardar, popupGuardar))).pack()

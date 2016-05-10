@@ -7,6 +7,7 @@ class Cerrar(Frame):
         Frame.__init__(self, parent)
         self.pack()
         widget = Button(self, text='Cerrar', command=self.cerrar)
+        widget["width"] = 10
         widget.pack(side=LEFT, expand=YES, fill=BOTH)
 
     def cerrar(self):
