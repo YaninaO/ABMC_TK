@@ -4,7 +4,8 @@ archivo = 'persona'
 
 
 def borra(idVar, popupLeer):
-    lab = Label(popupLeer, width=100, text=idVar.get())
+    lab = Label(popupLeer, width=100,
+                text='Id borrado: {}'.format(idVar.get()))
     lab.pack(side=TOP)
     id_value = idVar.get()
     db = shelve.open('persona')
@@ -19,7 +20,9 @@ def borra(idVar, popupLeer):
 
 def borrar():
     popupBorrar = Toplevel()
-    popupBorrar.geometry("400x300")
+    popupBorrar.geometry("200x200")
+    font = "Helvetica 12 bold"
+    Label(popupBorrar, text='Ingrese Id para borrar', font=font).pack(side=TOP)
     borrar = CrearFormBorrar(popupBorrar)
     Button(popupBorrar, text='Borrar',
            command=(lambda: borra(borrar, popupBorrar))).pack()

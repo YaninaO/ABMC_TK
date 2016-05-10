@@ -5,11 +5,10 @@ from leer import *
 
 class Modificar(object):
     def modifica(self, idVar, popupModificar):
-        lab = Label(popupModificar, width=100, text=idVar.get())
-        lab.pack(side=TOP)
         self.id_value = idVar.get()
         db = shelve.open('persona')
         form_modificar = FormularioModificar()
+        popupModificar.destroy()
         try:
             self.persona_a_modificar = db[self.id_value]
             popupModificar2 = Toplevel()
@@ -31,13 +30,12 @@ class Modificar(object):
 
     def modificar(self):
         popupModificar = Toplevel()
-        popupModificar.geometry("400x300")
+        popupModificar.geometry("200x200")
+        font = "Helvetica 12 bold"
+        Label(popupModificar, text='Ingrese Id para modificar', font=font).pack(side=TOP)
         mod = CrearFormLeer(popupModificar)
         Button(popupModificar, text='Buscar', command=(lambda:
                                                        self.modifica(mod, popupModificar))).pack()
-        popupModificar.grab_set()
-        popupModificar.focus_set()
-        popupModificar.wait_window()
 
     def dar_aumento(self):
         percentage_win = Toplevel()

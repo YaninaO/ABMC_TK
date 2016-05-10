@@ -5,7 +5,6 @@ from borrarModal import *
 from modificarModal import *
 from cerrar import Cerrar
 
-
 class MiApp:
 
     def __init__(self, parent=None, **configs):
@@ -13,17 +12,18 @@ class MiApp:
         # Ventana principal
         # ##################################################################
         self.myParent = parent
-        self.myParent.geometry("400x300")
-
-
-
+        self.myParent.geometry("300x300")
         # ##################################################################
         # Agrego contenedor
         # ##################################################################
-        self.Contenedor = Frame(self.myParent, bg="#444")
+        self.Contenedor = Frame(self.myParent, bg="light grey")
         self.Contenedor.pack(expand=YES, fill=BOTH)
 
-        Label(self.Contenedor, text='ABMC').pack(side=TOP)
+        fg = "light green",
+        bg = "dark green",
+        font = "Helvetica 18 bold"
+
+        Label(self.Contenedor, text='ABMC', font=font).pack(side=TOP)
         # ##################################################################
         # Agrego Secciones Principales
         # ##################################################################
@@ -48,12 +48,16 @@ class MiApp:
         self.controles.pack(side=TOP, expand=NO, fill=X)
 
         mod_class = Modificar()
-
+        ancho_boton = 10
         boton1 = Button(self.seccion_controles, text='Guardar', command=guardar)
-        boton2 = Button(self.seccion_controles, text='Ver!', command=leer)
-        boton3 = Button(self.seccion_controles, text='Borrar!', command=borrar)
-        boton4 = Button(self.seccion_controles, text='Modificar!',
+        boton1["width"] = ancho_boton
+        boton2 = Button(self.seccion_controles, text='Leer', command=leer)
+        boton2["width"] = ancho_boton
+        boton3 = Button(self.seccion_controles, text='Borrar', command=borrar)
+        boton3["width"] = ancho_boton
+        boton4 = Button(self.seccion_controles, text='Modificar',
                         command=mod_class.modificar)
+        boton4["width"] = ancho_boton
         boton1.pack()
         boton2.pack()
         boton3.pack()
@@ -63,5 +67,6 @@ class MiApp:
 if __name__ == '__main__':
     root = Tk()
     MiApp(root)
+    root.iconbitmap(bitmap="@icono.xbm")
     root.mainloop()
 
