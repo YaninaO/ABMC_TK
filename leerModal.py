@@ -6,11 +6,16 @@ archivo = 'persona'
 def lee(idVar, popupLeer):
     lab = Label(popupLeer, width=100, text=idVar.get())
     lab.pack(side=TOP)
-    t = idVar.get()
+    id_value = idVar.get()
     db = shelve.open('persona')
-    valorALeer = db[t]
-    lab_leer = Label(popupLeer, width=100, text=valorALeer)
-    lab_leer.pack(side=TOP)
+    try:
+        valorALeer = db[id_value]
+        lab_leer = Label(popupLeer, width=100, text=valorALeer)
+        lab_leer.pack(side=TOP)
+    except KeyError:
+        texto_a_mostrar = 'No existe un id: {id_value}'.format(id_value=id_value)
+        lab_leer = Label(popupLeer, width=100, text=texto_a_mostrar)
+        lab_leer.pack(side=TOP)
     db.close()
 
 

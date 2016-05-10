@@ -24,6 +24,3 @@ class FormularioModificar(object):
                 ent.config(textvariable=var)
                 variables[field]= var
         return variables
-
-        # def devolver_valor(self):
-        #     return self.float_number

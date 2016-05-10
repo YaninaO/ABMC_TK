@@ -13,11 +13,3 @@ def CrearFormBorrar(root):
     id_leer.config(textvariable=idVar)
     idVar.set("---")
     return idVar
-
-
-if __name__ == '__main__':
-    root = Tk()
-    vars_leer = CrearFormBorrar(root)
-    Cerrar(root).pack(side=RIGHT)
-    root.bind('<Return>', (lambda event: borrar(vars_leer)))
-    root.mainloop()
